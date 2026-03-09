@@ -1,3 +1,4 @@
+#pragma once
 namespace mathlib
 {
 	int sum(int a, int b) 
