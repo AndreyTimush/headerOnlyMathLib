@@ -14,6 +14,7 @@ namespace mathlib
 		if (b != 0) {
 			return a / b;
 		}
+		return 0;
 	}
 
 	int multiply(int a, int b) {
