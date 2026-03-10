@@ -30,6 +30,10 @@ namespace mathlib
 	}
 
 	int factorial(int a) {
+		int result = 1;
+		if (a <= 0) {
+			return result;
+		}
 		return a * factorial(a - 1);
 	}
 }
