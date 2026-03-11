@@ -2,6 +2,11 @@
 namespace mathlib
 {
 	int sum(int a, int b) {
+		long long summa = a + b;
+		if (a + b > INT_MAX) {
+			printf("Ошибка переполнения");
+			return 0;
+		}
 		return a + b;
 	}
 
