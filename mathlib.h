@@ -27,7 +27,7 @@ namespace mathlib
         	throw std::overflow_error("overflow error");
     	}
     
-    	int res = a / b;
+    	float res = static_cast<float>(a) / static_cast<float>(b);
     	return res;
 	}
 
