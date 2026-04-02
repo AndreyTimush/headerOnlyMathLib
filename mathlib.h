@@ -2,39 +2,41 @@
 namespace mathlib
 {
 	int sum(int a, int b) {
-		long long summa;
+		int summa;
 		if (__builtin_add_overflow(a, b, &summa)) {
-			printf("Ошибка переполнения\n");
-			return 0;
+			throw std::overflow_error("integer overflow");
 		}
-		std::cout << "sss = " << summa;
 		return summa;
 	}
 
 	int subtraction(int a, int b) {
-		long long res = static_cast<long long>(a) - static_cast<long long>(b);
-		if (res > INT_MAX || res < INT_MIN) {
-			printf("Ошибка переполнения\n");
-			return 0;
+		long long res;
+		if (__builtin_sub_overflow(a, b, &res)) {
+			throw std::overflow_error("Ошибка переполнения\n");
 		}
-		return a - b;
+		return res;
 	}
 	
 	float division(int a, int b) 
 	{ 
-		if (b != 0) {
-			return static_cast<float>(a) / static_cast<float>(b);
-		}
-		return -1;
+		if (b == 0) {
+        	throw std::runtime_error("Division by zero\n");
+    	}
+    
+    	if (a == INT_MIN && b == -1) {
+        	throw std::overflow_error("overflow error");
+    	}
+    
+    	int res = a / b;
+    	return res;
 	}
 
 	int multiply(int a, int b) {
 		long long mul = static_cast<long long>(a) * static_cast<long long>(b);
 		if (mul > INT_MAX || mul < INT_MIN) {
-			printf("Ошибка переполнения\n");
-			return 0;
+			throw std::overflow_error("Ошибка переполнения\n");
 		}
-		return a * b;
+		return mul;
 	}
 
 	int pow(int a, int b) {
@@ -42,18 +44,16 @@ namespace mathlib
 		for (int i = 1; i <= b; i++) {
 			res = res * a;
 			if (res > INT_MAX || res < INT_MIN) {
-				printf("Ошибка переполнения\n");
-				return 0;
+				throw std::overflow_error("Ошибка переполнения\n");
 			}
 		}
-		return res;
+		return static_cast<int>(res);
 	}
 
 	int factorial(int a) {
 		int result = 1;
 		if (a > 12) {
-			printf("Ошибка переполнения\n");
-			return 0;
+			throw std::overflow_error("Ошибка переполнения\n");
 		}
 		if (a <= 1) {
 			return result;
