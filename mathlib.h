@@ -10,7 +10,7 @@ namespace mathlib
 	}
 
 	int subtraction(int a, int b) {
-		long long res;
+		int res;
 		if (__builtin_sub_overflow(a, b, &res)) {
 			throw std::overflow_error("Ошибка переполнения\n");
 		}
