@@ -1,3 +1,5 @@
+#include <stdexcept>
+#include <climits>
 #pragma once
 namespace mathlib
 {
